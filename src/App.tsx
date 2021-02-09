@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { HashRouter as Router,Switch, Route,Link,Redirect } from "react-router-dom";
+import { HashRouter as Router,Switch, Route,Redirect } from "react-router-dom";
 import  Nav from 'components/Nav';
 
 const Wrapper = styled.div`
