@@ -37,7 +37,13 @@ const Nav = ()=>{
     return(
        <NavWrapper>
         <ul>  
-            <li>
+        <li>
+            <NavLink exact to="/" activeClassName='selectAcitve'>
+                <Svg name='home' />
+              主页
+            </NavLink>
+          </li>
+          <li>
              <NavLink to="/tags"  activeClassName='selectAcitve'>
              <Svg name='tags' />
               标签页
@@ -54,7 +60,7 @@ const Nav = ()=>{
                   <Svg name='money' />
                 统计页
               </NavLink>
-            </li>
+          </li>
           </ul>
        </NavWrapper> 
     )
