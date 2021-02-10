@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Svg from 'components/Svg'
 const NavWrapper = styled.nav`
   line-height:24px;
@@ -9,15 +9,26 @@ const NavWrapper = styled.nav`
     > li {
       width:33.33333%;
       text-align:center;
-      padding: 5px 0;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      .icon{
-        width:19px;
-        height:19px;
+      &:active{
+        background-color:#ddd;
       }
+      > a{
+        padding: 5px 0;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+      }
+        .icon{
+          width:19px;
+          height:19px;
+        }
+        .selectAcitve{
+          color:red;
+          .icon{
+            fill:red
+          }
+        }
     }
   }
 `
@@ -25,18 +36,24 @@ const NavWrapper = styled.nav`
 const Nav = ()=>{
     return(
        <NavWrapper>
-        <ul>
+        <ul>  
             <li>
+             <NavLink to="/tags"  activeClassName='selectAcitve'>
              <Svg name='tags' />
-             <Link to="/tags">标签页</Link>
+              标签页
+             </NavLink>
             </li>
           <li>
-              <Svg name='statistics' / >
-              <Link to="/money">记账页</Link>
+              <NavLink to="/money" activeClassName='selectAcitve'>
+                 <Svg name='statistics' / >
+                记账页
+              </NavLink>
             </li>
           <li>
-              <Svg name='money' />
-              <Link to="/statistics">统计页</Link>
+              <NavLink to="/statistics" activeClassName='selectAcitve'>
+                  <Svg name='money' />
+                统计页
+              </NavLink>
             </li>
           </ul>
        </NavWrapper> 
