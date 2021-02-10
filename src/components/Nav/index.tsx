@@ -24,9 +24,9 @@ const NavWrapper = styled.nav`
           height:19px;
         }
         .selectAcitve{
-          color:red;
+          color:#6699CC;
           .icon{
-            fill:red
+            fill:#6699CC
           }
         }
     }
