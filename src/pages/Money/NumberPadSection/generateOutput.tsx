@@ -18,7 +18,7 @@ const generateOption = (text:string,output:string) =>{
         case '清空':
             return  '';
         case '.' :
-            if(output.indexOf('.') >= 0) return output;
+            if(output.indexOf('.') >= 0) return  output ;
             return  output + text;
         default:
             return  '';

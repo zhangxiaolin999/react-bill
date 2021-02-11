@@ -11,6 +11,7 @@ type Props = {
 }
 
 const NumbersPadSection:React.FC<Props> = (props) =>{
+    console.log(props);
     const output = props.value.toString();
     const  setOutput = (output:string) =>{
        let value;
@@ -26,7 +27,7 @@ const NumbersPadSection:React.FC<Props> = (props) =>{
             // TODO
             if(props.onOk)  props.onOk();
         }
-        if (_.split('0123456789.','').concat(['删除','清空']).indexOf(text) >= 0){
+        if (_.split('.0123456789','').concat(['删除','清空']).indexOf(text) >= 0){
             setOutput(generateOption(text,output))
         }
     };

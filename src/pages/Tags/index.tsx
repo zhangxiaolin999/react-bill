@@ -1,11 +1,59 @@
 import Layout from 'components/Layout'
+import useTags from 'hooks/useTags'
+import styled from "styled-components";
+import Svg from 'components/Svg'
+import React from "react";
+import { Button } from 'antd-mobile';
+
+const TagList = styled.ol`
+    font-size: 16px;
+    background-color: white;
+        >li{
+          border-bottom: 1px solid #d5d5d9;
+          line-height: 20px;
+          padding: 12px 16px 12px 0;
+          margin-left: 16px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+`;
+
+const AddButton = styled(Button)`
+    font-size: 18px;
+    border: none;
+    width: 98px;
+    border-radius: 4px;
+    background-color: #767676;
+    color:white;
+ `;
+const  Center = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
+const Space = styled.div`
+      height: 16px;
+ `;
 
 const Tags = ()=> {
-  return(
+    const {tags,setTags} = useTags();
+    return(
     <Layout>
-      <h2>标签页面</h2>
+        <TagList>
+            { tags.map(tag => <li key={tag}>
+                <span className='oneLine'>{tag}</span>
+                <Svg name='right'/> </li>) }
+        </TagList>
+        <Center>
+            <Space />
+            <Space />
+            <AddButton>新增标签</AddButton>
+            <Space />
+        </Center>
     </Layout>
   )
-}
+};
 
 export default Tags
