@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import React from 'react';
 
 const NumberPadSection = styled.section`
   display:flex;
@@ -34,7 +35,7 @@ const NumberPadSection = styled.section`
   }
 `
 
-const NumbersPadSection = () =>{
+const NumbersPadSection:React.FC = () =>{
     return(
     <NumberPadSection>
         <div className='output'>100</div>

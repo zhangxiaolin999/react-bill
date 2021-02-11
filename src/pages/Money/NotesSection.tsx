@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from 'react';
 
 const NotesSection = styled.section`
     background-color:#fff;
@@ -20,7 +21,7 @@ const NotesSection = styled.section`
     }
 `
 
-const NoteSection = () =>{
+const NoteSection:React.FC = () =>{
     return(
         <NotesSection>
         <label>

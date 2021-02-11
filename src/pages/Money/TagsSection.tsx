@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from 'react';
 
 const TagsSection = styled.section`
 background-color:#fff;
@@ -29,7 +30,7 @@ align-items:flex-start;
 }
 `
 
-const TagSection = ()=>{
+const TagSection:React.FC = ()=>{
     return(
         <TagsSection>
      <ol>

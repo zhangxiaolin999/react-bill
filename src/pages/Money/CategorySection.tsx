@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from 'react';
 
 const CategorySection = styled.section`
 font-size:24px;
@@ -22,7 +23,7 @@ font-size:24px;
   }
 }
 `
-const CategorysSection = () =>{
+const CategorysSection:React.FC = () =>{
     return(
         <CategorySection>
             <ul>
