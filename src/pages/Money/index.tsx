@@ -9,7 +9,7 @@ import React from 'react';
 const MyLayout  = styled(Layout)`
   display:flex;
   flex-direction:column;
-`
+`;
 
 const Money:React.FC = ()=>{
     return(
@@ -20,5 +20,5 @@ const Money:React.FC = ()=>{
         <NumberPadSection />
       </MyLayout>
     )
-}
+};
 export default Money
