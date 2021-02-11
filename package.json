@@ -112,6 +112,11 @@
   "devDependencies": {
     "styled-components": "^5.2.1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "jest": {
     "roots": [
       "<rootDir>/src"
