@@ -24,12 +24,12 @@ font-size:24px;
   }
 }
 `;
-const CategoriesSection: React.FC = () => {
+type Props = { value: 0 | 1 ,onChange: (value: 0 | 1)=>void }
+const CategoriesSection: React.FC<Props> = (props) => {
     const categoriesMap = {0:'支出',1:'收入'};
     type Keys  = keyof typeof categoriesMap;
     const [categoriesList] = useState<Keys[]>([0,1]);
-    const [categories,setCategories] = useState(0);
-
+    const categories = props.value;
     return (
         <CategorySection>
             <ul>
@@ -38,7 +38,7 @@ const CategoriesSection: React.FC = () => {
                         <li
                         className={categories === c ? 'selected':'' }
                         key={c}
-                        onClick={()=> setCategories(c) }
+                        onClick={()=> props.onChange(c)   }
                         >{categoriesMap[c]}</li>
                     )
                 }

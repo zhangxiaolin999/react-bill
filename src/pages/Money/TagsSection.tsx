@@ -35,9 +35,13 @@ align-items:flex-start;
 }
 `;
 
-const TagSection:React.FC = (props)=>{
+type Props = { value :string[]; onChange: (selected:string[])=>void; }
+
+const TagSection:React.FC<Props> = (props)=>{
     const [tags,setTags] = useState<string[]>(['衣','食','住','行']);
-    const [selectedTags,setSelectedTags] = useState<string[]>([]);
+    const selectedTags = props.value;
+
+
     const onAddTag = () =>{
         prompt('新增标签', '', [ { text: '取消' },
             { text: '提交', onPress: ((value)=>{
@@ -51,11 +55,11 @@ const TagSection:React.FC = (props)=>{
         console.log(tag);
         const index = selectedTags?.indexOf(tag);
         if(index >= 0 ){
-            setSelectedTags(selectedTags?.filter(t => t !== tag))
+            props.onChange(selectedTags?.filter(t => t !== tag))
         }else{
-            setSelectedTags([...selectedTags,tag])
+            props.onChange([...selectedTags,tag])
         }
-    }
+    };
     const  GetClassName = (tag:string) => selectedTags.indexOf(tag) >= 0 ? 'selected' :''
     return(
     <Wrapper>
@@ -69,8 +73,7 @@ const TagSection:React.FC = (props)=>{
      <button onClick={() => onAddTag()}>新增标签</button>
     </Wrapper>
     )
-}
-
+};
 export default TagSection
 
      
