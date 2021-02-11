@@ -5,6 +5,7 @@ import Money from 'pages/Money'
 import Statistics from 'pages/Statistics'
 import NoMatch from 'pages/NoMatch'
 import Home from 'pages/home';
+import TagEdit from "pages/TagEdit";
 
 function App() {
   return (
@@ -13,8 +14,11 @@ function App() {
           <Route path='/' exact>
               <Home />
           </Route>
-          <Route path="/tags">
+          <Route exact path="/tags">
             <Tags />
+          </Route>
+          <Route path="/tags/:tag">
+              <TagEdit />
           </Route>
           <Route path="/money">
             <Money />
