@@ -1,9 +1,9 @@
 import Layout from 'components/Layout'
 
-const home = ()=>{
-    return(
+const home = () => {
+    return (
         <Layout>
-          <h2>主页</h2>
+            <h2>主页</h2>
         </Layout>
     )
 }

@@ -1,6 +1,6 @@
 {
-  "name": "react-project",
-  "version": "0.1.0",
+  "name": "react-bill",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
@@ -110,7 +110,9 @@
     ]
   },
   "devDependencies": {
-    "styled-components": "^5.2.1"
+    "husky": "^5.0.9",
+    "styled-components": "^5.2.1",
+    "webpackbar": "^5.0.0-3"
   },
   "husky": {
     "hooks": {
