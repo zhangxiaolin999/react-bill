@@ -36,41 +36,38 @@ align-items:flex-start;
 }
 `;
 
-type Props = { value :string[]; onChange: (selected:string[])=>void; }
+type Props = { value :number[]; onChange: (selected:number[])=>void; }
 
 const TagSection:React.FC<Props> = (props)=>{
-    const {tags,setTags}  =  useTags()
-    // const [tags,setTags] = useState<string[]>(['衣','食','住','行']);
-    const selectedTags = props.value;
+    const {tags,setTags}  =  useTags();
+    const selectedTagIds = props.value;
 
 
     const onAddTag = () =>{
         prompt('新增标签', '', [ { text: '取消' },
             { text: '提交', onPress: ((value)=>{
                     const tagName  = value;
-                    if (tagName) setTags([...tags,tagName]);
+                    if (tagName) setTags([...tags,{id:Math.random(),value:tagName}]);
                 }) },
         ], 'default', '')
     };
-    const onToggleTag = (tag:string) =>{
-        console.log(selectedTags);
-        console.log(tag);
-        const index = selectedTags?.indexOf(tag);
+    const onToggleTag = (tagId:number) =>{
+        const index = selectedTagIds?.indexOf(tagId);
         if(index >= 0 ){
-            props.onChange(selectedTags?.filter(t => t !== tag))
+            props.onChange(selectedTagIds?.filter(t => t !== tagId))
         }else{
-            props.onChange([...selectedTags,tag])
+            props.onChange([...selectedTagIds,tagId])
         }
     };
-    const  GetClassName = (tag:string) => selectedTags.indexOf(tag) >= 0 ? 'selected' :''
+    const  GetClassName = (tagId:number) => selectedTagIds.indexOf(tagId) >= 0 ? 'selected' :'';
     return(
     <Wrapper>
      <ol>
          {tags.map(tag => <li
-             onClick={()=>onToggleTag(tag)}
-             key={tag}
-             className={GetClassName(tag)}
-         >{tag}</li>)}
+             onClick={()=>onToggleTag(tag.id)}
+             key={tag.id}
+             className={GetClassName(tag.id)}
+         >{tag.value}</li>)}
      </ol>
      <button onClick={() => onAddTag()}>新增标签</button>
     </Wrapper>

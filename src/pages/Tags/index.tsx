@@ -41,13 +41,13 @@ const Space = styled.div`
  `;
 
 const Tags = ()=> {
-    const {tags,setTags} = useTags();
+    const {tags} = useTags();
     return(
     <Layout>
         <TagList>
-            { tags.map(tag => <li key={tag}>
+            { tags.map(tag => <li key={tag.id}>
                 <Link to={'/tags/' + tag }>
-                    <span className='oneLine'>{tag}</span>
+                    <span className='oneLine'>{tag.value}</span>
                     <Svg name='right'/>
                 </Link>
              </li>) }
