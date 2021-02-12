@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import React, {useState} from 'react';
+import React from 'react';
 import { Modal } from 'antd-mobile';
 import useTags from "hooks/useTags";
+import {createId} from "../../lib/createId";
 const prompt = Modal.prompt;
 
 const Wrapper = styled.section`
@@ -42,12 +43,11 @@ const TagSection:React.FC<Props> = (props)=>{
     const {tags,setTags}  =  useTags();
     const selectedTagIds = props.value;
 
-
     const onAddTag = () =>{
         prompt('新增标签', '', [ { text: '取消' },
             { text: '提交', onPress: ((value)=>{
                     const tagName  = value;
-                    if (tagName) setTags([...tags,{id:Math.random(),value:tagName}]);
+                    if (tagName) setTags([...tags,{id:createId(),value:tagName}]);
                 }) },
         ], 'default', '')
     };
