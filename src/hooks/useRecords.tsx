@@ -20,8 +20,11 @@ const useRecords = ()=>{
     },[]);
     useUpdate(()=>{ savelocal('records',records) },[records]);
     const addRecords = (newRecord:newRecordItem) =>{
+            if(newRecord.amount <= 0) return  false;
+            if(newRecord.tagIds.length  === 0) return  false;
             const record  = {...newRecord,createAt: (new Date()).toISOString() }
             setRecords([...records,record])
+        return true
     };
     return {records,setRecords,addRecords}
 };

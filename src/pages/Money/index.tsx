@@ -29,9 +29,10 @@ const Money:React.FC = ()=>{
         setSelected({...selected,...obj })
     };
     const submit = () =>{
-        addRecords(selected);
-        Toast.success('添加成功!', 1);
-        setSelected(defaultFromData)
+        if(addRecords(selected)){
+            Toast.success('添加成功!', 1);
+            setSelected(defaultFromData)
+        }
     };
     return(
       <MyLayout>
