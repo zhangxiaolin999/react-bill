@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, {ChangeEventHandler} from "react";
+import { useParams,useHistory } from "react-router-dom";
 import useTags from "hooks/useTags";
 import Layout from "components/Layout";
 import Icon from "components/Svg";
@@ -28,26 +28,34 @@ const  LableWrapper = styled.div`
   margin-top: 8px;
 `;
 
-
 const TagEdit: React.FC = ()=>{
     const { id } =  useParams<Params>();
-    const { findTag } = useTags();
+    const { findTag,updateTag,deleteTag } = useTags();
     const tag = findTag(parseInt(id));
+    const history = useHistory();
+    const onClickBack = () =>{
+        history.goBack()
+    };
     return(
         <Layout>
             <Topbar>
-                <Icon name='left'/>
+                <Icon name='left'  onClick={onClickBack} />
                 <span>编程标签</span>
                 <Icon />
             </Topbar>
             <LableWrapper>
-                <Lable label='标签名' type='text' placeholder='标签名' />
+                <Lable label='标签名'
+                       type='text'
+                       placeholder='标签名'
+                       value={tag.value}
+                       onChange={(e)=> {updateTag(tag.id,{value:e.target.value})} }
+                />
             </LableWrapper>
             <Center>
                 <Space />
                 <Space />
                 <Space />
-                <AButton>修改标签</AButton>
+                <AButton onClick={()=> deleteTag(tag.id)}>删除标签</AButton>
             </Center>
         </Layout>
     )
