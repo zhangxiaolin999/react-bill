@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-import { Modal } from 'antd-mobile';
 import useTags from "hooks/useTags";
-import {createId} from "../../lib/createId";
-const prompt = Modal.prompt;
 
 const Wrapper = styled.section`
 background-color:#fff;
@@ -40,17 +37,10 @@ align-items:flex-start;
 type Props = { value :number[]; onChange: (selected:number[])=>void; }
 
 const TagSection:React.FC<Props> = (props)=>{
-    const {tags,setTags}  =  useTags();
+    const {tags,addTag}  =  useTags();
     const selectedTagIds = props.value;
 
-    const onAddTag = () =>{
-        prompt('新增标签', '', [ { text: '取消' },
-            { text: '提交', onPress: ((value)=>{
-                    const tagName  = value;
-                    if (tagName) setTags([...tags,{id:createId(),value:tagName}]);
-                }) },
-        ], 'default', '')
-    };
+
     const onToggleTag = (tagId:number) =>{
         const index = selectedTagIds?.indexOf(tagId);
         if(index >= 0 ){
@@ -69,7 +59,7 @@ const TagSection:React.FC<Props> = (props)=>{
              className={GetClassName(tag.id)}
          >{tag.value}</li>)}
      </ol>
-     <button onClick={() => onAddTag()}>新增标签</button>
+     <button onClick={addTag}>新增标签</button>
     </Wrapper>
     )
 };

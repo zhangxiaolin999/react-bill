@@ -11,7 +11,6 @@ type Props = {
 }
 
 const NumbersPadSection:React.FC<Props> = (props) =>{
-    console.log(props);
     const output = props.value.toString();
     const  setOutput = (output:string) =>{
        let value;
