@@ -1,10 +1,12 @@
-import Layout from 'components/Layout'
-import useTags from 'hooks/useTags'
-import styled from "styled-components";
-import Svg from 'components/Svg'
 import React from "react";
-import { Button } from 'antd-mobile';
+import Svg from 'components/Svg'
+import Space from "components/Space";
+import Layout from 'components/Layout'
+import Center from "components/Center";
+import AButton from "components/Button/gray";
 import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import useTags from 'hooks/useTags'
 
 const TagList = styled.ol`
     font-size: 16px;
@@ -22,24 +24,6 @@ const TagList = styled.ol`
         }
 `;
 
-const AddButton = styled(Button)`
-    font-size: 18px;
-    border: none;
-    width: 98px;
-    border-radius: 4px;
-    background-color: #767676;
-    color:white;
- `;
-const  Center = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-`;
-const Space = styled.div`
-      height: 16px;
- `;
-
 const Tags = ()=> {
     const {tags} = useTags();
     return(
@@ -55,7 +39,7 @@ const Tags = ()=> {
         <Center>
             <Space />
             <Space />
-            <AddButton>新增标签</AddButton>
+            <AButton>新增标签</AButton>
             <Space />
         </Center>
     </Layout>
