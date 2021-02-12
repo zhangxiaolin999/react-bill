@@ -58,7 +58,7 @@ const TagEdit: React.FC = ()=>{
         <Layout>
             <Topbar>
                 <Icon name='left'  onClick={onClickBack} />
-                <span>编程标签</span>
+                <span>编辑标签</span>
                 <Icon />
             </Topbar>
             {tag ? tagContent(tag) : <Center>tag 不存在</Center>}

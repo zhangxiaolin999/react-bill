@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {useUpdate} from "./useUpdate";
 import {getlocal, savelocal} from "../lib/storage";
+import {Toast} from "antd-mobile";
 
 
 type RecordItem = {
@@ -20,10 +21,10 @@ const useRecords = ()=>{
     },[]);
     useUpdate(()=>{ savelocal('records',records) },[records]);
     const addRecords = (newRecord:newRecordItem) =>{
-            if(newRecord.amount <= 0) return  false;
-            if(newRecord.tagIds.length  === 0) return  false;
-            const record  = {...newRecord,createAt: (new Date()).toISOString() }
-            setRecords([...records,record])
+            if(newRecord.amount <= 0) { Toast.info('请输入金额', 1);return false };
+            if(newRecord.tagIds.length  === 0) { Toast.info('请选择标签');return false; }
+            const record  = {...newRecord,createAt: (new Date()).toISOString() };
+            setRecords([...records,record]);
         return true
     };
     return {records,setRecords,addRecords}
