@@ -33,9 +33,27 @@ const TagEdit: React.FC = ()=>{
     const { findTag,updateTag,deleteTag } = useTags();
     const tag = findTag(parseInt(id));
     const history = useHistory();
-    const onClickBack = () =>{
-        history.goBack()
-    };
+    const onClickBack = () => history.goBack();
+
+    const tagContent = (tag: { id: number; value: string }) => (
+        <div>
+            <LableWrapper>
+                <Lable label="标签名" type="text" placeholder="标签名"
+                       value={tag.value}
+                       onChange={(e)=> {updateTag(tag.id,{value:e.target.value})} }
+                />
+            </LableWrapper>
+            <Center>
+                <Space/>
+                <Space/>
+                <Space/>
+                <AButton onClick={() => {
+                    deleteTag(tag.id);
+                }}>删除标签</AButton>
+            </Center>
+        </div>
+    );
+
     return(
         <Layout>
             <Topbar>
@@ -43,20 +61,7 @@ const TagEdit: React.FC = ()=>{
                 <span>编程标签</span>
                 <Icon />
             </Topbar>
-            <LableWrapper>
-                <Lable label='标签名'
-                       type='text'
-                       placeholder='标签名'
-                       value={tag.value}
-                       onChange={(e)=> {updateTag(tag.id,{value:e.target.value})} }
-                />
-            </LableWrapper>
-            <Center>
-                <Space />
-                <Space />
-                <Space />
-                <AButton onClick={()=> deleteTag(tag.id)}>删除标签</AButton>
-            </Center>
+            {tag ? tagContent(tag) : <Center>tag 不存在</Center>}
         </Layout>
     )
 };
