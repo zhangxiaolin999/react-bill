@@ -4,7 +4,7 @@ import {getlocal, savelocal} from "../lib/storage";
 import {Toast} from "antd-mobile";
 
 
-type RecordItem = {
+export type RecordItem = {
     tagIds:number[],
     note:string,
     category: 0 | 1,

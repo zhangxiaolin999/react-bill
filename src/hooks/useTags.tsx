@@ -19,6 +19,8 @@ const useTags = () =>{
                     }) },
             ], 'default', '')
     };
+    const getTagName = (id:number) => tags.filter(t => t.id === id)[0].value;
+
     useEffect(()=>{
         let localTag = getlocal('tags') || [];
         if(localTag.length === 0){
@@ -28,7 +30,7 @@ const useTags = () =>{
     },[]);
     useUpdate(()=>{ savelocal('tags',tags) },[tags]);
 
-    return { tags,setTags,findTag,updateTag,findIndex,deleteTag,addTag}
+    return { tags,setTags,findTag,updateTag,findIndex,deleteTag,addTag,getTagName}
 };
 
 export default useTags
