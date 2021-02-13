@@ -8,3 +8,6 @@ display:flex;
 flex-direction:column;
 ...rest
 
+chmod +x scripts/deploy.sh   给脚本增加增加可执行程序
+
+

@@ -1,6 +1,7 @@
 {
   "name": "react-bill",
   "version": "1.0.0",
+  "homepage": "https://zhangxiaolin999.github.io/bil-website/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
